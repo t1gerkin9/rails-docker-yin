@@ -29,7 +29,7 @@ jobs:
     working_directory: ~/Desktop/Docker/rails-docker-yin/src
     steps:
       - checkout:
-          path: ~/Desktop/Docker/rails-docker-yin
+          path: ~/Desktop/Docker/rails-docker-yin/src
       - ruby/install-deps
       - run:
           name: Database setup
