@@ -7,10 +7,10 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.7
-    working_directory: ~/Desktop/Docker/rails-docker-yin/src
+    working_directory: ~/rails-docker-yin/src
     steps:
       - checkout:
-          path: ~/Desktop/Docker/rails-docker-yin
+          path: ~/rails-docker-yin
       - ruby/install-deps
 
   test:
@@ -26,10 +26,10 @@ jobs:
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
-    working_directory: ~/Desktop/Docker/rails-docker-yin/src
+    working_directory: ~/rails-docker-yin/src
     steps:
       - checkout:
-          path: ~/Desktop/Docker/rails-docker-yin/src
+          path: ~rails-docker-yin
       - ruby/install-deps
       - run:
           name: Database setup
