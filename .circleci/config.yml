@@ -1,5 +1,12 @@
-- checkout:
-    path: ~/rails-docker-yin
-- run: | 
-      ls -la
-      pwd
+version: 2.1
+
+jobs:
+ build:
+    docker:
+      - image: cimg/ruby:3.0.3-browsers
+    steps:
+      - checkout:
+          path: ~/rails-docker-yin
+      - run: | 
+          ls -la
+          pwd
