@@ -1,13 +1,77 @@
 version: 2.1
 
+orbs:
+  # Since 1.2.0, install-deps has been updated with `app-dir` arg.
+  # See https://circleci.com/developer/orbs/orb/circleci/ruby?version=1.2.0#commands-install-deps
+  ruby: circleci/ruby@1.8.0
+  # heroku: circleci/heroku@1.2.3
+
 jobs:
   build:
     docker:
       - image: cimg/ruby:3.0.3-browsers
-    working_directory: ~/rails-docker-yin/src
     steps:
-      - checkout:
-          path: ~/rails-docker-yin
-      - run: | 
-            ls -la
-            pwd
+      - checkout
+      - ruby/install-deps:
+          app-dir: src
+  
+  test:
+    docker:
+      - image: cimg/ruby:3.0.3-browsers
+      - image: circleci/mysql:5.5
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: app_test
+          MYSQL_USER: root
+    environment:
+      APP_DATABASE_HOST: 127.0.0.1
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - run: |
+          bundle version
+      - ruby/install-deps:
+          app-dir: src
+      - run:
+          name: run DB migration
+          command: bundle exec rails db:migrate
+          working_directory: /home/circleci/project/src
+      - run:
+          name: test
+          command: bundle exec rake test
+          working_directory: /home/circleci/project/src
+
+#  deploy:
+#    docker:
+#      - image: circleci/ruby:2.7
+#    steps:
+#      - checkout
+#      - setup_remote_docker:
+#          version: 19.03.13
+#      - heroku/install
+#      - run:
+#          name: heroku login
+#          command: heroku container:login
+#      - run:
+#          name: push docker image
+#          command: heroku container:push web -a $HEROKU_APP_NAME
+#      - run:
+#          name: release docker image
+#          command: heroku container:release web -a $HEROKU_APP_NAME
+#      - run:
+#          name: database setup
+#          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+
+workflows:
+  version: 2
+  #build_test_and_deploy:
+  build_and_test:
+    jobs:
+      - build
+      - test
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: main
