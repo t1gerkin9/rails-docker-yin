@@ -1,0 +1,15 @@
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/YIN/.rbenv/versions/2.7.6/bin/ruby -I /Users/YIN/.rbenv/versions/2.7.6/lib/ruby/site_ruby/2.7.0 -r ./siteconf20220620-6041-1iywbrj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20220620-6041-t3bedi

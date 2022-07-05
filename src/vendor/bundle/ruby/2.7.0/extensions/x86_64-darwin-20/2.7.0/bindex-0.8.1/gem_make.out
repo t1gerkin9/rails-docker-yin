@@ -1,0 +1,15 @@
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/YIN/.rbenv/versions/2.7.6/bin/ruby -I /Users/YIN/.rbenv/versions/2.7.6/lib/ruby/site_ruby/2.7.0 -r ./siteconf20220620-6041-1afcl0k.rb extconf.rb
+creating Makefile
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/YIN/Desktop/Docker/rails-docker-yin/src/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20220620-6041-zhxx7o/skiptrace/internal
